@@ -1,0 +1,24 @@
+<% if notice %>
+  <script>
+    localStorage.removeItem('articleData');
+  </script>
+<% end %>
+
+<div class="container mt-4">
+  <h1><%= @article.title %></h1>
+  <p><strong>Источник:</strong> <%= @article.source %></p>
+  <% if @article.link.present? %>
+    <p><strong>Ссылка:</strong> <%= link_to @article.link, @article.link, target: '_blank' %></p>
+  <% end %>
+  <p><strong>Категория:</strong> <%= @article.category.name if @article.category %></p>
+  <p><strong>Автор:</strong> <%= @article.user.email if @article.user %></p>
+  <p><strong>Возрастная аудитория:</strong> <%= @article.age_group %></p>
+  <p><strong>Дата добавления:</strong> <%= @article.created_at.strftime("%d.%m.%Y %H:%M") %></p>
+
+  <h2>Содержимое новости</h2>
+  <div class="article-content">
+    <%= raw @article.html %>
+  </div>
+
+  <%= link_to 'Назад к списку новостей', articles_path, class: 'btn btn-secondary mt-3' %>
+</div>
