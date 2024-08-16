@@ -2,7 +2,7 @@ module StepsControllers
   class ArticleStepsController < ApplicationController
     include Wicked::Wizard
 
-    steps *Article.form_steps.keys
+    steps(*Article.form_steps.keys)
 
     def show
       article_attrs = Rails.cache.read session.id

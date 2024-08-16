@@ -9,11 +9,11 @@ class Article < ApplicationRecord
   before_save :sanitize_content
 
   enum form_step: {
-    first_step: [:title, :source, :link],
+    first_step: %i[title source link],
     second_step: [:html],
-    third_step: [:category, :age_group]
+    third_step: %i[category age_group]
   }
-  
+
   attribute :form_step, :string
 
   with_options if: -> { required_for_step?(:first_step) } do
@@ -31,7 +31,7 @@ class Article < ApplicationRecord
 
   def required_for_step?(step)
     return true if form_step.nil?
-  
+
     ordered_keys = self.class.form_steps.keys.map(&:to_sym)
     !!(ordered_keys.index(step) <= ordered_keys.index(form_step.to_sym))
   end
@@ -39,6 +39,6 @@ class Article < ApplicationRecord
   private
 
   def sanitize_content
-    self.html = ActionController::Base.helpers.sanitize(self.html)
+    self.html = ActionController::Base.helpers.sanitize(html)
   end
 end

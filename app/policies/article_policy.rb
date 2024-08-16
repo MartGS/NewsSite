@@ -10,8 +10,6 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def new?
-    puts "ArticlePolicy#new?"
-    pp current_user.present?
     user.present?
   end
 

@@ -34,8 +34,8 @@ gem 'jbuilder'
 gem 'devise'
 gem 'devise-i18n'
 gem 'faker'
-gem 'pundit'
 gem 'mailcatcher', '~> 0.10.0'
+gem 'pundit'
 gem 'wicked'
 
 # Use Redis adapter to run Action Cable in production

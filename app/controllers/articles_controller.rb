@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     authorize @article
-    
+
     @article.destroy
 
     respond_to do |format|
@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    Rails.cache.fetch(session.id) { Hash.new }
+    Rails.cache.fetch(session.id) { {} }
     redirect_to build_article_path(Article.form_steps.keys.first)
   end
 
@@ -33,6 +33,6 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    return @article = Article.find(params[:id]) if params[:id]
+    @article = Article.find(params[:id]) if params[:id]
   end
 end
