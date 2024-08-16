@@ -4,7 +4,6 @@ require 'rails_helper'
 
 RSpec.describe Article, type: :model do
   let(:user) { User.create!(email: 'test@example.com', password: 'password') }
-  let(:category) { Category.create!(name: 'Авто') }
 
   let(:valid_attributes) do
     {
@@ -12,7 +11,7 @@ RSpec.describe Article, type: :model do
       source: 'Test Source',
       html: '<p>Test HTML</p>',
       user:,
-      category:
+      category: 'Авто'
     }
   end
 

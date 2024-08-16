@@ -1,1 +1,7 @@
-<%= turbo_stream.remove "article_#{@article.id}" %>
+<turbo-stream action="remove" target="<%= dom_id(@article) %>">
+  <template>
+    <tr id="<%= dom_id(@article) %>" style="display: none;">
+      <td colspan="5">Статья была успешно удалена.</td>
+    </tr>
+  </template>
+</turbo-stream>

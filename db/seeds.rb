@@ -12,7 +12,6 @@
 
 ActiveRecord::Base.transaction do
   User.destroy_all
-  Category.destroy_all
   Article.destroy_all
 
   5.times do
@@ -23,12 +22,7 @@ ActiveRecord::Base.transaction do
     )
   end
 
-  Category::CATEGORY.each do |category_name|
-    Category.create!(name: category_name)
-  end
-
   users = User.all
-  categories = Category.all
 
   10.times do
     Article.create!(
@@ -38,9 +32,9 @@ ActiveRecord::Base.transaction do
       html: Faker::Lorem.paragraphs(number: 3).join("\n\n"),
       age_group: Article::AGE_GROUP.sample,
       user: users.sample,
-      category: categories.sample
+      category: Article::CATEGORY.sample
     )
   end
 
-  puts "Создано #{User.count} пользователей, #{Category.count} категорий и #{Article.count} статей."
+  puts "Создано #{User.count} пользователей и #{Article.count} статей."
 end

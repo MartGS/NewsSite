@@ -1,0 +1,25 @@
+<%= form_with model: @article, url: wizard_path, method: :patch do |f| %>
+  <% if f.object.errors.any? %>
+    <div class="error_messages">
+      <% f.object.errors.full_messages.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <div class="mb-3">
+      <%= f.label :category, "Категория новости", class: "form-label" %>
+      <%= f.select :category, Article::CATEGORY, { include_blank: true }, class: "form-select" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :age_group, "Возрастная аудитория", class: "form-label" %>
+      <%= f.select :age_group, Article::AGE_GROUP, { include_blank: true }, class: "form-select" %>
+    </div>
+
+    <div>
+      <%= f.submit 'Опубликовать', class: 'btn btn-success' %>
+      <%= link_to 'Назад', previous_wizard_path, class: 'btn btn-info' %>
+    </div>
+  </div>
+<% end %>

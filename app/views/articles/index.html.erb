@@ -15,18 +15,18 @@
   </thead>
   <tbody>
     <% @articles.each do |article| %>
-      <tr>
+      <tr id="<%= dom_id(article) %>">
         <td>
           <%= link_to article.title, article_path(article), class: 'text-decoration-none' %>
         </td>
         <td>
-          <%= article.category.name if article.category %>
+          <%= article.category if article.category %>
         </td>
         <td>
           <%= article.user.email if article.user %>
         </td>
         <td>
-          <%= article.created_at.strftime("%d.%m.%Y %H:%M") %>
+          <%= article.created_at.strftime(date_format) %>
         </td>
         <% if user_signed_in? && article.user == current_user %>
           <td class="border-0 bg-transparent">

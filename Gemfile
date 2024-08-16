@@ -32,7 +32,11 @@ gem 'cssbundling-rails'
 gem 'jbuilder'
 
 gem 'devise'
+gem 'devise-i18n'
 gem 'faker'
+gem 'pundit'
+gem 'mailcatcher', '~> 0.10.0'
+gem 'wicked'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

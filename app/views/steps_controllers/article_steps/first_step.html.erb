@@ -1,0 +1,28 @@
+<%= form_with model: @article, url: wizard_path, method: :patch do |f| %>
+  <% if f.object.errors.any? %>
+    <div class="error_messages">
+      <% f.object.errors.full_messages.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <div class="mb-3">
+      <%= f.label :title, "Заголовок", class: "form-label" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :source, "Источник новости", class: "form-label" %>
+      <%= f.text_field :source, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :link, "URL источника", class: "form-label" %>
+      <%= f.text_field :link, type: :url, class: "form-control", required: true, placeholder: "Пример: http://example.com" %>
+    </div>
+
+    <div>
+      <%= f.submit 'Далее', class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>
