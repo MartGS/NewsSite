@@ -1,0 +1,22 @@
+ru:
+  activerecord:
+    models:
+      article: "Статья"
+    attributes:
+      article:
+        title: "Заголовок"
+        source: "Источник новости"
+        html: "HTML-текст новости"
+        category: "Категория новости"
+    errors:
+      models:
+        article:
+          attributes:
+            title:
+              blank: "не может быть пустым"
+            source:
+              blank: "не может быть пустым"
+            html:
+              blank: "не может быть пустым"
+            category:
+              blank: "не может быть пустой"

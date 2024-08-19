@@ -1,0 +1,21 @@
+<%= form_with model: @article, url: wizard_path, method: :patch do |f| %>
+  <% if f.object.errors.any? %>
+    <div class="error_messages">
+      <% f.object.errors.full_messages.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <div class="mb-3">
+      <%= f.label :html, "HTML-текст новости", class: "form-label" %>
+      <%= f.text_area :html, class: "form-control", rows: 5 %>
+    </div>
+
+    <div>
+      <%= f.submit 'Далее', class: 'btn btn-success' %>
+      <%= link_to 'Назад', previous_wizard_path, class: 'btn btn-info' %>
+    </div>
+  </div>
+<% end %>

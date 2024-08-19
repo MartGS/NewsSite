@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_240_729_191_649) do
+ActiveRecord::Schema[7.1].define(version: 20_240_819_193_447) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -23,17 +21,10 @@ ActiveRecord::Schema[7.1].define(version: 20_240_729_191_649) do
     t.text 'html', null: false
     t.string 'age_group'
     t.bigint 'user_id', null: false
-    t.bigint 'category_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index ['category_id'], name: 'index_articles_on_category_id'
+    t.string 'category'
     t.index ['user_id'], name: 'index_articles_on_user_id'
-  end
-
-  create_table 'categories', force: :cascade do |t|
-    t.string 'name', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
   end
 
   create_table 'users', force: :cascade do |t|
@@ -48,6 +39,5 @@ ActiveRecord::Schema[7.1].define(version: 20_240_729_191_649) do
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  add_foreign_key 'articles', 'categories'
   add_foreign_key 'articles', 'users'
 end
